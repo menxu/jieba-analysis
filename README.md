@@ -1,7 +1,9 @@
 
-jieba分词只返回自定义词库中的词
+用处：只返回自定义词库中的词
 
 # 使用文档
+
+## 下载打包
 
 ## 打包引入pom
 
@@ -25,7 +27,7 @@ custom.txt
 ## 使用
 
 ```java
-WordDictionary.getInstance().loadUserDict(Paths.get("/Users/edy/Workspace/gf/baili-demo/libs/baili.txt"));
+WordDictionary.getInstance().loadUserDict(Paths.get("/xxxxx/custom.txt"));
 JiebaSegmenter segmenter = new JiebaSegmenter();
 List<SegToken> segTokens = segmenter.process("你是结巴商品的大姨", JiebaSegmenter.SegMode.INDEX, true);
 System.out.println(JSON.toJSON(segTokens));
