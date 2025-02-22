@@ -27,13 +27,18 @@ custom.txt
 ## 使用
 
 ```java
-WordDictionary.getInstance().loadUserDict(Paths.get("/xxxxx/custom.txt"));
 JiebaSegmenter segmenter = new JiebaSegmenter();
-List<SegToken> segTokens = segmenter.process("你是结巴商品的大姨", JiebaSegmenter.SegMode.INDEX, true);
-System.out.println(JSON.toJSON(segTokens));
+List<String> strs = Arrays.asList("你是结巴商品的大姨红军大学","结巴商品是红军大学你的大姨","你是大姨红军大学的结巴商品","你是大姨");
+for (String str : strs) {
+    List<SegToken> segTokens = segmenter.process(str, JiebaSegmenter.SegMode.INDEX, true);
+    System.out.println(JSON.toJSON(segTokens));
+}
 ```
 
 输出----词库中有的词
 ```json
-[{"endOffset":6,"startOffset":2,"word":"结巴商品"}]
+[{"endOffset":6,"startOffset":2,"word":"结巴商品"},{"endOffset":13,"startOffset":9,"word":"红军大学"}]
+[{"endOffset":4,"startOffset":0,"word":"结巴商品"},{"endOffset":9,"startOffset":5,"word":"红军大学"}]
+[{"endOffset":8,"startOffset":4,"word":"红军大学"},{"endOffset":13,"startOffset":9,"word":"结巴商品"}]
+[]
 ```
